@@ -1,3 +1,4 @@
+@Library('shared-library') _
 pipeline {
     agent any
     stages {
@@ -8,6 +9,16 @@ pipeline {
                     echo "Linux Version: ${linuxVersion}"
                 }
             }
+        stage("clojure"){
+            steps {
+                 echo "Clojure version: Hola"
+            }
+        }
+        stage("using libraries"){
+            steps {
+                 helloWorld()
+            }
+        
         }
     }
 }
