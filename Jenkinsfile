@@ -3,8 +3,9 @@ pipeline {
     stages {
         stage('Check Groovy Version') {
             steps {
-                withGroovy {
-                    sh 'groovy --version'
+                script {
+                    def groovyVersion = sh(script: 'groovy --version', returnStdout: true).trim()
+                    echo "Groovy Version: ${groovyVersion}"
                 }
             }
         }
