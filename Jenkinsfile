@@ -17,7 +17,7 @@ pipeline {
         }
         stage('using libraries') {
             steps {
-                helloWorld(name: 'Alice', dayOfWeek: 'Monday')
+                helloWorld(name: "Alice", dayOfWeek: "Monday")
             }
         }
     }
