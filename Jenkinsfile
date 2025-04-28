@@ -9,16 +9,16 @@ pipeline {
                     echo "Linux Version: ${linuxVersion}"
                 }
             }
-        stage("clojure"){
-            steps {
-                 echo "Clojure version: Hola"
+            stage('clojure') {
+                steps {
+                    echo 'Clojure version: Hola'
+                }
             }
-        }
-        stage("using libraries"){
-            steps {
-                 helloWorld()
+            stage('using libraries') {
+                steps {
+                    helloWorld()
+                }
             }
-        
         }
     }
 }
