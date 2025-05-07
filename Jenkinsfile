@@ -115,13 +115,7 @@ node('maven-node') {
 
                 // Loop over each record in splits to prepare the testGroups that we'll run in parallel
                 testGroups["split-${i}"] = {
-                node('maven-node') {
-                    // Define tools
-                    def mvnHome = tool name: 'MavenHome', type: 'maven'
-                    def jdkHome = tool name: 'JAVAHOME', type: 'jdk'
-
-                    // Set environment variables
-                    env.PATH = "${jdkHome}/bin:${mvnHome}/bin:${env.PATH}"
+                    node('maven-node')  {
                         checkout scm
                     dir('CalculatorWithTest') {
                         sh 'ls -l'
@@ -145,7 +139,7 @@ node('maven-node') {
                         // Archive the test results
                         junit '**/target/surefire-reports/TEST-*.xml'
                     }
-                }
+                    }
                 }
             }
             parallel testGroups
