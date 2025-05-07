@@ -3,7 +3,7 @@ package com.aslinformationservices.calculator;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class testHeavyWorkloadInitalize{
+class testHeavyWorkloadInitalizeTest{
 	private static final double DELTA = 1e-15;
 
 
