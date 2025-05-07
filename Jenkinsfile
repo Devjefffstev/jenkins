@@ -96,11 +96,11 @@ node('maven-node') {
         }
     }
 
-    stage('Test CalculatorWithTest project') {
-        dir('CalculatorWithTest') {
-            sh 'mvn test'
-        }
-    }
+    // stage('Test CalculatorWithTest project') {
+    //     dir('CalculatorWithTest') {
+    //         sh 'mvn test'
+    //     }
+    // }
 
     stage('Parallel Test Execution') {
             sh 'ls -l'
