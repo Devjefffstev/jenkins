@@ -42,7 +42,7 @@ pipeline {
         stage('Clone Calculator project'){
             steps {
                 script {
-                    git clone 'https://github.com/hassaanQadir/spring-boot-calculator.git'
+                    git url: 'https://github.com/hassaanQadir/spring-boot-calculator.git,branch: main'
                 }
             }
         }
