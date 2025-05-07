@@ -94,9 +94,7 @@ node {
         }
     }
 
-    stage('Clean Workspace') {
-        steps {
-            sh 'rm -rf *'
-        }
+    stage('Clean Workspace') {       
+            sh 'rm -rf *'        
     }
 }
