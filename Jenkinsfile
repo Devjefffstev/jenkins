@@ -93,4 +93,10 @@ node {
             sh 'mvn test'
         }
     }
+
+    stage('Clean Workspace') {
+        steps {
+            sh 'rm -rf *'
+        }
+    }
 }
