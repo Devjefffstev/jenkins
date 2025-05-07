@@ -10,12 +10,7 @@ class CalculatorTest {
 	    void testAdd() {
 	        Calculator calculator = new Calculator();
 	        assertEquals(5.0, calculator.add(2.0, 3.0), DELTA);
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				Thread.currentThread().interrupt();
-				fail("Test interrupted");
-			}
+			
 	    }
 
 	    @Test
