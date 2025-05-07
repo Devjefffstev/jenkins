@@ -57,10 +57,16 @@ pipeline {
         //         }
         //     }
         // }
-        stage('Build and Test') {
+        stage('Build CalculatorWithTest project') {
             steps {
                 dir('CalculatorWithTest') {
-                    sh 'mvn clean install'
+                    sh 'mvn clean install'                   
+                }
+            }
+        }
+        stage('Test CalculatorWithTest project') {
+            steps {
+                dir('CalculatorWithTest') {                    
                     sh 'mvn test'
                 }
             }
