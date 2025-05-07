@@ -39,11 +39,9 @@ pipeline {
                 }
             }
         }
-        stage('Clone Calculator project'){
+        stage('Clone Calculator project') {
             steps {
-                script {
-                    git url: 'https://github.com/hassaanQadir/spring-boot-calculator.git,branch: main'
-                }
+                    git url: 'https://github.com/hassaanQadir/spring-boot-calculator.git', branch: 'main'
             }
         }
     }
