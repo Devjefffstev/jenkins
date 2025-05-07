@@ -94,8 +94,5 @@ node {
         }
     }
 
-    stage('Clean Workspace') {
-        // Clean the workspace after the build and test stages
-            sh 'rm -rf *'
-    }
+   
 }
