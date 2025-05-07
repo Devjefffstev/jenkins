@@ -139,7 +139,31 @@ class CalculatorTest {
 
 		long endTime = System.currentTimeMillis();
 
-		System.out.println("Total Execution Time for Heavy Workload: " + (endTime - startTime) + " ms");
+		System.out.println("Total Execution Time for testHeavyWorkloadInital: " + (endTime - startTime) + " ms");
+	}
+	@Test
+	void testHeavyWorkloadInitalize() {
+		CustomFeature customFeature = new CustomFeature();
+		int iterations = 1000000; // Number of iterations to simulate workload
+		int datasetSize = 1_000_000; // Size of each dataset
+		double[] dataset = new double[datasetSize];
+
+		// Populate the dataset with random values
+		for (int i = 0; i < datasetSize; i++) {
+			dataset[i] = Math.random() * 100;
+		}
+
+		long startTime = System.currentTimeMillis();
+
+		// Perform multiple iterations of mean calculations
+		for (int i = 0; i < iterations; i++) {
+			double mean = customFeature.calculateMean(dataset);
+			assertTrue(mean >= 0 && mean <= 100, "Mean should be within the expected range");
+		}
+
+		long endTime = System.currentTimeMillis();
+
+		System.out.println("Total Execution Time for testHeavyWorkloadInitalez: " + (endTime - startTime) + " ms");
 	}
 	@Test
 	void testHeavyWorkloadfinal() {
@@ -163,7 +187,7 @@ class CalculatorTest {
 
 		long endTime = System.currentTimeMillis();
 
-		System.out.println("Total Execution Time for Heavy Workload: " + (endTime - startTime) + " ms");
+		System.out.println("Total Execution Time for testHeavyWorkloadfinal: " + (endTime - startTime) + " ms");
 	}
 	@Test
 	void testHeavyWorkload() {
@@ -212,6 +236,6 @@ class CalculatorTest {
 
 		long endTime = System.currentTimeMillis();
 
-		System.out.println("Total Execution Time for Heavy Workload: " + (endTime - startTime) + " ms");
+		System.out.println("Total Execution Time for testHeavyWorkloadtesting: " + (endTime - startTime) + " ms");
 	}
 }
