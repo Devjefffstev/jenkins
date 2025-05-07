@@ -1,9 +1,9 @@
 @Library('shared-library') _
 pipeline {
     agent {label 'maven-node'}
-    tools {
-        maven 'maven-3.6.3'
-    }
+    // tools {
+    //     maven 'maven-3.6.3'
+    // }
     stages {
         stage('Check Linux Version') {
             steps {
