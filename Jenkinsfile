@@ -82,9 +82,12 @@ node('maven-node') {
 
     // Set environment variables
     env.PATH = "${jdkHome}/bin:${mvnHome}/bin:${env.PATH}"
-
+    // Capture the start time
+    def startTime = System.currentTimeMillis()
+    echo "Pipeline started at: ${new Date(startTime)}"
     stage('check folder') {
         sh 'ls -l'
+        echo "Pipeline started at: ${new Date(startTime)}"
     }
     stage('clone repo') {
         // Clone the repository
@@ -101,9 +104,17 @@ node('maven-node') {
             sh 'mvn install -Dmaven.test.failure.ignore=true'
         }
     }
+    // Capture the end time
+    def endTime = System.currentTimeMillis()
+    echo "Pipeline ended at: ${new Date(endTime)}"
+
+    // Calculate and display the total duration
+    def durationInMinutes = (endTime - startTime) / (1000 * 60)
+    echo "Total Pipeline Duration: ${durationInMinutes} minutes"
 
     stage('Clean Workspace') {
             // Clean the workspace after the build and test stages
             sh 'rm -rf *'
+        echo "Total Pipeline Duration: ${durationInMinutes} minutes"
     }
 }
