@@ -25,22 +25,19 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build parallelProject') {
             steps {
                 dir('parallelTestExecutor') {
                     sh 'mvn clean install'
                 }
             }
         }
-
-    // stage('compile maven project') {
-    //     steps {
-    //         script {
-    //             def mavenProject = 'parallelTestExecutor'
-    //             def mavenGoals = 'clean install'
-    //             sh "mvn -f ${mavenProject}/pom.xml ${mavenGoals}"
-    //         }
-    //     }
-    // }
+        stage('Test parallelProject') {
+            steps {
+                dir('parallelTestExecutor') {
+                    sh 'mvn test'
+                }
+            }
+        }
     }
 }
