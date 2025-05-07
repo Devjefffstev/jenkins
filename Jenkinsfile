@@ -96,9 +96,21 @@ node('maven-node') {
             sh 'mvn test'
         }
     }
+    stage('testwithFunction') {
+        dir('CalculatorWithTest') {
+            // Call the function to run tests
+            runTests()
+        }
+    }
 
     stage('Clean Workspace') {
             // Clean the workspace after the build and test stages
             sh 'rm -rf *'
     }
+}
+
+void runTests(def args) {
+    mvn 'install -Dmaven.test.failure.ignore=true'
+    /* Archive the test results */
+    junit '**/target/surefire-reports/TEST-*.xml'
 }
