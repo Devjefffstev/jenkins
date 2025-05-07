@@ -41,19 +41,19 @@ pipeline {
         }
         stage('Clone Calculator project') {
             steps {
-                    git url: 'https://github.com/hassaanQadir/spring-boot-calculator.git', branch: 'main'
+                    git url: 'https://github.com/Ratnakar14/CalculatorWithSpringBoot.git', branch: 'main'
             }
         }
         stage('Build Calculator project') {
             steps {
-                dir('calculator') {
+                dir('calculater/calculater/ASL Coding Test') {
                     sh 'mvn clean install'
                 }
             }
         }
         stage('Test Calculator project') {
             steps {
-                dir('calculator') {
+                dir('calculater/calculater/ASL Coding Test') {
                     sh 'mvn test'
                 }
             }
