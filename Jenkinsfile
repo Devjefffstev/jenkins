@@ -87,7 +87,6 @@ node('maven-node') {
     echo "Pipeline started at: ${new Date(startTime)}"
     stage('check folder') {
         sh 'ls -l'
-        echo "Pipeline started at: ${new Date(startTime)}"
     }
     stage('clone repo') {
         // Clone the repository
@@ -116,7 +115,9 @@ node('maven-node') {
     stage('Clean Workspace') {
             // Clean the workspace after the build and test stages
             sh 'rm -rf *'
-        echo "Total Pipeline Duration: ${durationInMinutes} minutes"
-        echo "Total Pipeline Duration: ${durationInSeconds} seconds"
+            echo "Pipeline Started at: ${startTime}"
+            echo "Pipeline Finished at: ${startTime}"
+            echo "Total Pipeline Duration: ${durationInMinutes} minutes"
+            echo "Total Pipeline Duration: ${durationInSeconds} seconds"
     }
 }
