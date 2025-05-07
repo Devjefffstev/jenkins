@@ -7,10 +7,10 @@ class CustomFeatureTest {
 	private static final double DELTA = 1e-15;
 
 	@Test
-	void testHeavyWorkloadInital_CustomFeatureTest() {
+	void testHeavyWorkloadfinal() {
 		CustomFeature customFeature = new CustomFeature();
-		int iterations = 100000; // Number of iterations to simulate workload
-		System.out.println("testHeavyWorkloadInital_CustomFeatureTest: " + iterations);
+		int iterations = 10000; // Number of iterations to simulate workload
+		System.out.println("testHeavyWorkloadfinal: " + iterations);
 		int datasetSize = 1_000_000; // Size of each dataset
 		double[] dataset = new double[datasetSize];
 
@@ -29,7 +29,8 @@ class CustomFeatureTest {
 
 		long endTime = System.currentTimeMillis();
 
-		System.out.println("Total Execution Time for testHeavyWorkloadInital: " + ((endTime - startTime) / (1000))
-				+ " seconds" + " or " + (endTime - startTime) + " milliseconds");
+		System.out.println("Total Execution Time for testHeavyWorkloadfinal: " + ((endTime - startTime) / (1000 * 60))
+				+ " minutes" + " or " + ((endTime - startTime) / (1000)) + " seconds" + " or " + (endTime - startTime)
+				+ " milliseconds");
 	}
 }

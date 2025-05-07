@@ -3,14 +3,15 @@ package com.aslinformationservices.calculator;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class CustomFeatureTest {
+class CustomFeatureTest{
 	private static final double DELTA = 1e-15;
 
+
 	@Test
-	void testHeavyWorkloadInital_CustomFeatureTest() {
+	void testHeavyWorkloadInitalize() {
 		CustomFeature customFeature = new CustomFeature();
-		int iterations = 100000; // Number of iterations to simulate workload
-		System.out.println("testHeavyWorkloadInital_CustomFeatureTest: " + iterations);
+		int iterations = 1000000; // Number of iterations to simulate workload
+		System.out.println("testHeavyWorkloadInitalize: " + iterations);
 		int datasetSize = 1_000_000; // Size of each dataset
 		double[] dataset = new double[datasetSize];
 
@@ -29,7 +30,7 @@ class CustomFeatureTest {
 
 		long endTime = System.currentTimeMillis();
 
-		System.out.println("Total Execution Time for testHeavyWorkloadInital: " + ((endTime - startTime) / (1000))
-				+ " seconds" + " or " + (endTime - startTime) + " milliseconds");
+		System.out.println("Total Execution Time for testHeavyWorkloadInitalez: " + (endTime - startTime) + " ms");
 	}
+	
 }

@@ -12,12 +12,6 @@ class CalculatorTest {
 		assertEquals(5.0, calculator.add(2.0, 3.0), DELTA);
 		assertEquals(-1.0, calculator.add(-2.0, 1.0), DELTA);
 		assertEquals(0.0, calculator.add(0.0, 0.0), DELTA);
-		// try {
-		// 	Thread.sleep(5000);
-		// } catch (InterruptedException e) {
-		// 	Thread.currentThread().interrupt();
-		// 	fail("Test interrupted");
-		// }
 	}
 
 	@Test
@@ -26,12 +20,7 @@ class CalculatorTest {
 		assertEquals(-1.0, calculator.subtract(2.0, 3.0), DELTA);
 		assertEquals(-3.0, calculator.subtract(-2.0, 1.0), DELTA);
 		assertEquals(0.0, calculator.subtract(0.0, 0.0), DELTA);
-		// try {
-		// 	Thread.sleep(5000);
-		// } catch (InterruptedException e) {
-		// 	Thread.currentThread().interrupt();
-		// 	fail("Test interrupted");
-		// }
+
 	}
 
 	@Test
@@ -116,126 +105,5 @@ class CalculatorTest {
 		double[] emptyArray = {};
 		assertThrows(IllegalArgumentException.class, () -> customFeature.calculateMean(emptyArray));
 	}
-
-	@Test
-	void testHeavyWorkloadInital() {
-		CustomFeature customFeature = new CustomFeature();
-		int iterations = 100000; // Number of iterations to simulate workload
-		int datasetSize = 1_000_000; // Size of each dataset
-		double[] dataset = new double[datasetSize];
-
-		// Populate the dataset with random values
-		for (int i = 0; i < datasetSize; i++) {
-			dataset[i] = Math.random() * 100;
-		}
-
-		long startTime = System.currentTimeMillis();
-
-		// Perform multiple iterations of mean calculations
-		for (int i = 0; i < iterations; i++) {
-			double mean = customFeature.calculateMean(dataset);
-			assertTrue(mean >= 0 && mean <= 100, "Mean should be within the expected range");
-		}
-
-		long endTime = System.currentTimeMillis();
-
-		System.out.println("Total Execution Time for testHeavyWorkloadInital: " + ((endTime - startTime) / (1000)) + " seconds" + " or " + (endTime - startTime) + " milliseconds");
-	}
-	// @Test
-	// void testHeavyWorkloadInitalize() {
-	// 	CustomFeature customFeature = new CustomFeature();
-	// 	int iterations = 1000000; // Number of iterations to simulate workload
-	// 	int datasetSize = 1_000_000; // Size of each dataset
-	// 	double[] dataset = new double[datasetSize];
-
-	// 	// Populate the dataset with random values
-	// 	for (int i = 0; i < datasetSize; i++) {
-	// 		dataset[i] = Math.random() * 100;
-	// 	}
-
-	// 	long startTime = System.currentTimeMillis();
-
-	// 	// Perform multiple iterations of mean calculations
-	// 	for (int i = 0; i < iterations; i++) {
-	// 		double mean = customFeature.calculateMean(dataset);
-	// 		assertTrue(mean >= 0 && mean <= 100, "Mean should be within the expected range");
-	// 	}
-
-	// 	long endTime = System.currentTimeMillis();
-
-	// 	System.out.println("Total Execution Time for testHeavyWorkloadInitalez: " + (endTime - startTime) + " ms");
-	// }
-	// @Test
-	// void testHeavyWorkloadfinal() {
-	// 	CustomFeature customFeature = new CustomFeature();
-	// 	int iterations = 10000; // Number of iterations to simulate workload
-	// 	int datasetSize = 1_000_000; // Size of each dataset
-	// 	double[] dataset = new double[datasetSize];
-
-	// 	// Populate the dataset with random values
-	// 	for (int i = 0; i < datasetSize; i++) {
-	// 		dataset[i] = Math.random() * 100;
-	// 	}
-
-	// 	long startTime = System.currentTimeMillis();
-
-	// 	// Perform multiple iterations of mean calculations
-	// 	for (int i = 0; i < iterations; i++) {
-	// 		double mean = customFeature.calculateMean(dataset);
-	// 		assertTrue(mean >= 0 && mean <= 100, "Mean should be within the expected range");
-	// 	}
-
-	// 	long endTime = System.currentTimeMillis();
-
-	// 	System.out.println("Total Execution Time for testHeavyWorkloadfinal: " + ((endTime - startTime) / (1000 * 60))  + " minutes" + " or " + ((endTime - startTime) / (1000)) + " seconds" + " or " + (endTime - startTime) + " milliseconds");
-	// }
-	// @Test
-	// void testHeavyWorkload() {
-	// 	CustomFeature customFeature = new CustomFeature();
-	// 	int iterations = 100000; // Number of iterations to simulate workload
-	// 	int datasetSize = 1_000_000; // Size of each dataset
-	// 	double[] dataset = new double[datasetSize];
-
-	// 	// Populate the dataset with random values
-	// 	for (int i = 0; i < datasetSize; i++) {
-	// 		dataset[i] = Math.random() * 100;
-	// 	}
-
-	// 	long startTime = System.currentTimeMillis();
-
-	// 	// Perform multiple iterations of mean calculations
-	// 	for (int i = 0; i < iterations; i++) {
-	// 		double mean = customFeature.calculateMean(dataset);
-	// 		assertTrue(mean >= 0 && mean <= 100, "Mean should be within the expected range");
-	// 	}
-
-	// 	long endTime = System.currentTimeMillis();
-
-	// 	System.out.println("Total Execution Time for Heavy Workload: " + ((endTime - startTime) / (1000 * 60))  + " minutes" + " or " + ((endTime - startTime) / (1000)) + " seconds" + " or " + (endTime - startTime) + " milliseconds");
-	// }
-
-	// @Test
-	// void testHeavyWorkloadtesting() {
-	// 	CustomFeature customFeature = new CustomFeature();
-	// 	int iterations = 100000; // Number of iterations to simulate workload
-	// 	int datasetSize = 1_000_000; // Size of each dataset
-	// 	double[] dataset = new double[datasetSize];
-
-	// 	// Populate the dataset with random values
-	// 	for (int i = 0; i < datasetSize; i++) {
-	// 		dataset[i] = Math.random() * 100;
-	// 	}
-
-	// 	long startTime = System.currentTimeMillis();
-
-	// 	// Perform multiple iterations of mean calculations
-	// 	for (int i = 0; i < iterations; i++) {
-	// 		double mean = customFeature.calculateMean(dataset);
-	// 		assertTrue(mean >= 0 && mean <= 100, "Mean should be within the expected range");
-	// 	}
-
-	// 	long endTime = System.currentTimeMillis();
-
-	// 	System.out.println("Total Execution Time for testHeavyWorkloadtesting: " + ((endTime - startTime) / (1000 * 60))  + " minutes" + " or " + ((endTime - startTime) / (1000)) + " seconds" + " or " + (endTime - startTime) + " milliseconds");
-	// }
+	
 }
