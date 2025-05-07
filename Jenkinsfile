@@ -83,7 +83,7 @@ node('maven-node') {
     // Set environment variables
     env.PATH = "${jdkHome}/bin:${mvnHome}/bin:${env.PATH}"
 
-    stage('check folder'){
+    stage('check folder') {
         sh 'ls -l'
     }
     stage('clone repo') {
@@ -103,7 +103,6 @@ node('maven-node') {
     }
 
     stage('Parallel Test Execution') {
-        dir('CalculatorWithTest') {
             sh 'ls -l'
             // Request the test groupings based on previous test results
             def splits = splitTests parallelism: [$class: 'CountDrivenParallelism', size: 4], generateInclusions: true
@@ -118,7 +117,8 @@ node('maven-node') {
                 testGroups["split-${i}"] = {
                     node {
                         checkout scm
-
+                    dir('CalculatorWithTest') {
+                        sh 'ls -l'
                         // Clean each test node to start
                         sh 'mvn clean'
 
@@ -139,10 +139,10 @@ node('maven-node') {
                         // Archive the test results
                         junit '**/target/surefire-reports/TEST-*.xml'
                     }
+                    }
                 }
             }
             parallel testGroups
-        }
     }
 
     stage('Clean Workspace') {
