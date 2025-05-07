@@ -117,4 +117,25 @@ class CalculatorTest {
 		assertThrows(IllegalArgumentException.class, () -> customFeature.calculateMean(emptyArray));
 	}
 
+	@Test
+	void testLongRunningComputation() {
+		CustomFeature customFeature = new CustomFeature();
+		double[] largeDataset = new double[10_000_000]; // Simulate a large dataset
+
+		// Populate the dataset with values
+		for (int i = 0; i < largeDataset.length; i++) {
+			largeDataset[i] = Math.random() * 100;
+		}
+
+		// Simulate a long-running computation
+		long startTime = System.currentTimeMillis();
+		double mean = customFeature.calculateMean(largeDataset);
+		long endTime = System.currentTimeMillis();
+
+		System.out.println("Mean: " + mean);
+		System.out.println("Execution Time: " + (endTime - startTime) + " ms");
+
+		// Assert that the computation completes successfully
+		assertTrue(mean >= 0 && mean <= 100, "Mean should be within the expected range");
+	}
 }
