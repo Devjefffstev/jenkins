@@ -136,6 +136,6 @@ class CalculatorTest {
 		System.out.println("Execution Time: " + (endTime - startTime) + " ms");
 
 		// Assert that the computation completes successfully
-		assertTrue(mean >= 0 && mean <= 100, "Mean should be within the expected range");
+		assertTrue(mean >= 0 && mean <= 10, "Mean should be within the expected range");
 	}
 }

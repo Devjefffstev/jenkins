@@ -74,7 +74,7 @@
 //     }
 // }
 
-node {
+node('maven-node') {
     // Define tools
     def mvnHome = tool name: 'MavenHome', type: 'maven'
     def jdkHome = tool name: 'JAVAHOME', type: 'jdk'
