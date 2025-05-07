@@ -12,12 +12,12 @@ class CalculatorTest {
 		assertEquals(5.0, calculator.add(2.0, 3.0), DELTA);
 		assertEquals(-1.0, calculator.add(-2.0, 1.0), DELTA);
 		assertEquals(0.0, calculator.add(0.0, 0.0), DELTA);
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			Thread.currentThread().interrupt();
-			fail("Test interrupted");
-		}
+		// try {
+		// 	Thread.sleep(5000);
+		// } catch (InterruptedException e) {
+		// 	Thread.currentThread().interrupt();
+		// 	fail("Test interrupted");
+		// }
 	}
 
 	@Test
@@ -26,12 +26,12 @@ class CalculatorTest {
 		assertEquals(-1.0, calculator.subtract(2.0, 3.0), DELTA);
 		assertEquals(-3.0, calculator.subtract(-2.0, 1.0), DELTA);
 		assertEquals(0.0, calculator.subtract(0.0, 0.0), DELTA);
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			Thread.currentThread().interrupt();
-			fail("Test interrupted");
-		}
+		// try {
+		// 	Thread.sleep(5000);
+		// } catch (InterruptedException e) {
+		// 	Thread.currentThread().interrupt();
+		// 	fail("Test interrupted");
+		// }
 	}
 
 	@Test
@@ -142,7 +142,7 @@ class CalculatorTest {
 	@Test
 	void testHeavyWorkload() {
 		CustomFeature customFeature = new CustomFeature();
-		int iterations = 100; // Number of iterations to simulate workload
+		int iterations = 100000; // Number of iterations to simulate workload
 		int datasetSize = 1_000_000; // Size of each dataset
 		double[] dataset = new double[datasetSize];
 
