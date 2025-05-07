@@ -1,6 +1,6 @@
 @Library('shared-library') _
 pipeline {
-    agent 'maven-node'
+    agent {label 'maven-node'}
     tools {
         maven 'maven-3.6.3'
     }
