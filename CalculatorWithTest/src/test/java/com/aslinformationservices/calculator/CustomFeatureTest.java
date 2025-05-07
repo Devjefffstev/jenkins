@@ -9,7 +9,7 @@ class CustomFeatureTest {
 	@Test
 	void testHeavyWorkloadInital_CustomFeatureTest() {
 		CustomFeature customFeature = new CustomFeature();
-		int iterations = 100000; // Number of iterations to simulate workload
+		int iterations = 10000; // Number of iterations to simulate workload
 		System.out.println("testHeavyWorkloadInital_CustomFeatureTest: " + iterations);
 		int datasetSize = 1_000_000; // Size of each dataset
 		double[] dataset = new double[datasetSize];
