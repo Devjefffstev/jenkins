@@ -1,11 +1,11 @@
-@Library('shared-library') _
-pipeline {
-    agent { label 'maven-node' }
-    tools {
-        maven 'MavenHome'
-        jdk 'JAVAHOME'
-    }
-    stages {
+// @Library('shared-library') _
+// pipeline {
+//     agent { label 'maven-node' }
+//     tools {
+//         maven 'MavenHome'
+//         jdk 'JAVAHOME'
+//     }
+//     stages {
         // stage('Check Linux Version') {
         //     steps {
         //         script {
@@ -57,19 +57,32 @@ pipeline {
         //         }
         //     }
         // }
-        stage('Build CalculatorWithTest project') {
-            steps {
-                dir('CalculatorWithTest') {
-                    sh 'mvn clean install'                   
-                }
-            }
-        }
-        stage('Test CalculatorWithTest project') {
-            steps {
-                dir('CalculatorWithTest') {                    
-                    sh 'mvn test'
-                }
-            }
-        }
-    }
+//         stage('Build CalculatorWithTest project') {
+//             steps {
+//                 dir('CalculatorWithTest') {
+//                     sh 'mvn clean install -DskipTests'                   
+//                 }
+//             }
+//         }
+//         stage('Test CalculatorWithTest project') {
+//             steps {
+//                 dir('CalculatorWithTest') {                    
+//                     sh 'mvn test'
+//                 }
+//             }
+//         }
+//     }
+// }
+
+
+node {
+  stage('Build') {
+    sh 'mvn clean install -DskipTests'
+  }
+  stage('Test') {
+    sh 'mvn test'
+  }
+  stage('Deploy') {
+    sh 'mvn deploy'
+  }
 }
