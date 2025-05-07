@@ -139,7 +139,7 @@ class CalculatorTest {
 
 		long endTime = System.currentTimeMillis();
 
-		System.out.println("Total Execution Time for testHeavyWorkloadInital: " + (endTime - startTime) + " ms");
+		System.out.println("Total Execution Time for testHeavyWorkloadInital: " + ((endTime - startTime) / (1000 * 60))  + " ms");
 	}
 	// @Test
 	// void testHeavyWorkloadInitalize() {
@@ -187,7 +187,7 @@ class CalculatorTest {
 
 		long endTime = System.currentTimeMillis();
 
-		System.out.println("Total Execution Time for testHeavyWorkloadfinal: " + (endTime - startTime) + " ms");
+		System.out.println("Total Execution Time for testHeavyWorkloadfinal: " + ((endTime - startTime) / (1000 * 60))  + " ms");
 	}
 	@Test
 	void testHeavyWorkload() {
@@ -211,7 +211,7 @@ class CalculatorTest {
 
 		long endTime = System.currentTimeMillis();
 
-		System.out.println("Total Execution Time for Heavy Workload: " + (endTime - startTime) + " ms");
+		System.out.println("Total Execution Time for Heavy Workload: " + ((endTime - startTime) / (1000 * 60)) + " minutes");
 	}
 
 	@Test
@@ -236,6 +236,6 @@ class CalculatorTest {
 
 		long endTime = System.currentTimeMillis();
 
-		System.out.println("Total Execution Time for testHeavyWorkloadtesting: " + (endTime - startTime) + " ms");
+		System.out.println("Total Execution Time for testHeavyWorkloadtesting: " + ((endTime - startTime) / (1000 * 60))  + " ms");
 	}
 }
