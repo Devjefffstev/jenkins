@@ -1,6 +1,9 @@
 @Library('shared-library') _
 pipeline {
-    agent any
+    agent 'maven-node'
+    tools {
+        maven 'maven-3.6.3'
+    }
     stages {
         stage('Check Linux Version') {
             steps {
@@ -18,6 +21,15 @@ pipeline {
         stage('using libraries') {
             steps {
                 helloWorld(name: "Alice", dayOfWeek: "Monday")
+            }
+        }
+        stage('compile maven project') {
+            steps {
+                script {
+                    def mavenProject = 'parallelTestExecutor'
+                    def mavenGoals = 'clean install'
+                    sh "mvn -f ${mavenProject}/pom.xml ${mavenGoals}"
+                }
             }
         }
     }
