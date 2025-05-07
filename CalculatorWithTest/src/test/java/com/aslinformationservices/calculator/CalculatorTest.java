@@ -117,4 +117,4 @@ class CalculatorTest {
 		assertThrows(IllegalArgumentException.class, () -> customFeature.calculateMean(emptyArray));
 	}
 
-
+}
