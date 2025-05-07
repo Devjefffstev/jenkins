@@ -60,13 +60,13 @@
 //         stage('Build CalculatorWithTest project') {
 //             steps {
 //                 dir('CalculatorWithTest') {
-//                     sh 'mvn clean install -DskipTests'                   
+//                     sh 'mvn clean install -DskipTests'
 //                 }
 //             }
 //         }
 //         stage('Test CalculatorWithTest project') {
 //             steps {
-//                 dir('CalculatorWithTest') {                    
+//                 dir('CalculatorWithTest') {
 //                     sh 'mvn test'
 //                 }
 //             }
@@ -74,8 +74,14 @@
 //     }
 // }
 
-
 node {
+    // Define tools
+    def mvnHome = tool name: 'MavenHome', type: 'maven'
+    def jdkHome = tool name: 'JAVAHOME', type: 'jdk'
+
+    // Set environment variables
+    env.PATH = "${jdkHome}/bin:${mvnHome}/bin:${env.PATH}"
+
     stage('Build CalculatorWithTest project') {
         dir('CalculatorWithTest') {
             sh 'mvn clean install'
@@ -88,4 +94,3 @@ node {
         }
     }
 }
-
