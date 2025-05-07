@@ -2,6 +2,7 @@ package com.aslinformationservices.calculator;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
 class CalculatorTest {
 	private static final double DELTA = 1e-15;
 
@@ -11,6 +12,12 @@ class CalculatorTest {
 		assertEquals(5.0, calculator.add(2.0, 3.0), DELTA);
 		assertEquals(-1.0, calculator.add(-2.0, 1.0), DELTA);
 		assertEquals(0.0, calculator.add(0.0, 0.0), DELTA);
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+			fail("Test interrupted");
+		}
 	}
 
 	@Test
@@ -19,6 +26,12 @@ class CalculatorTest {
 		assertEquals(-1.0, calculator.subtract(2.0, 3.0), DELTA);
 		assertEquals(-3.0, calculator.subtract(-2.0, 1.0), DELTA);
 		assertEquals(0.0, calculator.subtract(0.0, 0.0), DELTA);
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+			fail("Test interrupted");
+		}
 	}
 
 	@Test
@@ -103,5 +116,26 @@ class CalculatorTest {
 		double[] emptyArray = {};
 		assertThrows(IllegalArgumentException.class, () -> customFeature.calculateMean(emptyArray));
 	}
+
+	@Test
+	void testLongRunningComputation() {
+		CustomFeature customFeature = new CustomFeature();
+		double[] largeDataset = new double[1_000_000_000]; // Simulate a large dataset
+
+		// Populate the dataset with values
+		for (int i = 0; i < largeDataset.length; i++) {
+			largeDataset[i] = Math.random() * 1000;
+		}
+
+		// Simulate a long-running computation
+		long startTime = System.currentTimeMillis();
+		double mean = customFeature.calculateMean(largeDataset);
+		long endTime = System.currentTimeMillis();
+
+		System.out.println("Mean: " + mean);
+		System.out.println("Execution Time: " + (endTime - startTime) + " ms");
+
+		// Assert that the computation completes successfully
+		assertTrue(mean >= 0 && mean <= 100, "Mean should be within the expected range");
+	}
 }
-		
