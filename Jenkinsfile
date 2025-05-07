@@ -3,6 +3,7 @@ pipeline {
     agent { label 'maven-node' }
     tools {
         maven 'MavenHome'
+        jdk 'JAVAHOME'
     }
     stages {
         stage('Check Linux Version') {
