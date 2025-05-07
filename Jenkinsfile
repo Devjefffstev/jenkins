@@ -96,10 +96,53 @@ node('maven-node') {
         }
     }
 
-    stage('Test CalculatorWithTest project') {
-        dir('CalculatorWithTest') {
-            sh 'mvn install -Dmaven.test.failure.ignore=true'
-        }
+    // stage('Test CalculatorWithTest project') {
+    //     dir('CalculatorWithTest') {
+    //         sh 'mvn test'
+    //     }
+    // }
+
+    stage('Parallel Test Execution') {
+            sh 'ls -l'
+            // Request the test groupings based on previous test results
+            def splits = splitTests parallelism: [$class: 'CountDrivenParallelism', size: 4], generateInclusions: true
+
+            // Create dictionary to hold set of parallel test executions
+            def testGroups = [:]
+
+            for (int i = 0; i < splits.size(); i++) {
+                def split = splits[i]
+
+                // Loop over each record in splits to prepare the testGroups that we'll run in parallel
+                testGroups["split-${i}"] = {
+                    node('maven-node')  {
+                        checkout scm
+                    dir('CalculatorWithTest') {
+                        sh 'ls -l'
+                        // Clean each test node to start
+                        sh 'mvn clean'
+
+                        def mavenInstall = 'install -Dmaven.test.failure.ignore=true'
+
+                        // Write includesFile or excludesFile for tests
+                        if (split.includes) {
+                            writeFile file: "target/parallel-test-includes-${i}.txt", text: split.list.join('\n')
+                            mavenInstall += " -Dsurefire.includesFile=target/parallel-test-includes-${i}.txt"
+ } else {
+                            writeFile file: "target/parallel-test-excludes-${i}.txt", text: split.list.join('\n')
+                            mavenInstall += " -Dsurefire.excludesFile=target/parallel-test-excludes-${i}.txt"
+                        }
+
+                        // Call the Maven build with tests
+                        sh "mvn ${mavenInstall}"
+
+                        // Archive the test results
+                        // junit '**/target/surefire-reports/TEST-*.xml'
+                    }
+                    }
+                }
+            }
+            parallel testGroups
     }
 
     stage('Clean Workspace') {
