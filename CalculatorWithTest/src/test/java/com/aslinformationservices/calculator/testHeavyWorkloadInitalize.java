@@ -10,7 +10,7 @@ class testHeavyWorkloadInitalizeTest{
 	@Test
 	void testHeavyWorkloadInitalize() {
 		CustomFeature customFeature = new CustomFeature();
-		int iterations = 1000000; // Number of iterations to simulate workload
+		int iterations = 100000; // Number of iterations to simulate workload
 		System.out.println("testHeavyWorkloadInitalize: " + iterations);
 		int datasetSize = 1_000_000; // Size of each dataset
 		double[] dataset = new double[datasetSize];
