@@ -154,13 +154,15 @@ node('maven-node') {
 
     // Calculate and display the total duration
     def durationInMinutes = (endTime - startTime) / (1000 * 60)
+    def durationInSeconds = (endTime - startTime) / 1000
     echo "Total Pipeline Duration: ${durationInMinutes} minutes"
 
-    
     stage('Clean Workspace') {
             // Clean the workspace after the build and test stages
             sh 'rm -rf *'
-        echo "Total Pipeline Duration: ${durationInMinutes} minutes"
+            echo "Pipeline Started at: ${startTime}"
+            echo "Pipeline Finished at: ${startTime}"
+            echo "Total Pipeline Duration: ${durationInMinutes} minutes"
+            echo "Total Pipeline Duration: ${durationInSeconds} seconds"
     }
-
 }
