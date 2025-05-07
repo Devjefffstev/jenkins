@@ -140,8 +140,10 @@ class CalculatorTest {
 		}
 
 		long endTime = System.currentTimeMillis();
-
-		System.out.println("Total Execution Time for testHeavyWorkloadInital: " + ((endTime - startTime) / (1000.0 * 60.0))  + " minutes" + " or " + ((endTime - startTime) / (1000)) + " seconds" + " or " + (endTime - startTime) + " milliseconds" + " or " + TimeUnit.MILLISECONDS.toSeconds((endTime - startTime))  + " to seconds" + " or " + TimeUnit.MILLISECONDS.toMinutes((endTime - startTime))  + " to minutes" + " or " + TimeUnit.MILLISECONDS.toHours((endTime - startTime))  + " to hours" + " or " + TimeUnit.MILLISECONDS.toDays((endTime - startTime))  + " to days" );
+		long seconds = endTime - startTime / 1000;
+        long minutes = seconds / 60;
+        seconds = seconds % 60;
+		System.out.println("Minutes: " + minutes + ", Seconds: " + seconds);
 	}
 	// @Test
 	// void testHeavyWorkloadInitalize() {
