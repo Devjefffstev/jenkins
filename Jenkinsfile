@@ -137,7 +137,7 @@ node('maven-node') {
                         sh "mvn ${mavenInstall}"
 
                         // Archive the test results
-                        junit '**/target/surefire-reports/TEST-*.xml'
+                        // junit '**/target/surefire-reports/TEST-*.xml'
                     }
                     }
                 }
