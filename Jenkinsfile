@@ -81,7 +81,10 @@ node {
 
     // Set environment variables
     env.PATH = "${jdkHome}/bin:${mvnHome}/bin:${env.PATH}"
-
+    stage('clone repo') {
+        // Clone the repository
+        git url: 'https://github.com/Devjefffstev/jenkins.git', branch: 'main'
+    }
     stage('Build CalculatorWithTest project') {
         dir('CalculatorWithTest') {
             sh 'mvn clean install -DskipTests'
@@ -95,7 +98,7 @@ node {
     }
 
     stage('Clean Workspace') {
-        // Clean the workspace after the build and test stages
+            // Clean the workspace after the build and test stages
             sh 'rm -rf *'
     }
 }
