@@ -82,6 +82,10 @@ node('maven-node') {
 
     // Set environment variables
     env.PATH = "${jdkHome}/bin:${mvnHome}/bin:${env.PATH}"
+
+    stage('check folder'){
+        sh 'ls -l'
+    }
     stage('clone repo') {
         // Clone the repository
         git url: 'https://github.com/Devjefffstev/jenkins.git', branch: 'main'
