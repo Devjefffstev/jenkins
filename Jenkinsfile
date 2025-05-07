@@ -44,5 +44,19 @@ pipeline {
                     git url: 'https://github.com/hassaanQadir/spring-boot-calculator.git', branch: 'main'
             }
         }
+        stage('Build Calculator project') {
+            steps {
+                dir('calculator') {
+                    sh 'mvn clean install'
+                }
+            }
+        }
+        stage('Test Calculator project') {
+            steps {
+                dir('calculator') {
+                    sh 'mvn test'
+                }
+            }
+        }
     }
 }
