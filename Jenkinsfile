@@ -1,9 +1,9 @@
 @Library('shared-library') _
 pipeline {
-    agent {label 'maven-node'}
-    // tools {
-    //     maven 'maven-3.6.3'
-    // }
+    agent { label 'maven-node' }
+    tools {
+        maven 'MavenHome'
+    }
     stages {
         stage('Check Linux Version') {
             steps {
@@ -20,17 +20,26 @@ pipeline {
         }
         stage('using libraries') {
             steps {
-                helloWorld(name: "Alice", dayOfWeek: "Monday")
+                helloWorld(name: 'Alice', dayOfWeek: 'Monday')
             }
         }
-        stage('compile maven project') {
+
+        stage('Build') {
             steps {
-                script {
-                    def mavenProject = 'parallelTestExecutor'
-                    def mavenGoals = 'clean install'
-                    sh "mvn -f ${mavenProject}/pom.xml ${mavenGoals}"
+                dir('parallelTestExecutor') {
+                    sh 'mvn clean install'
                 }
             }
         }
+
+    // stage('compile maven project') {
+    //     steps {
+    //         script {
+    //             def mavenProject = 'parallelTestExecutor'
+    //             def mavenGoals = 'clean install'
+    //             sh "mvn -f ${mavenProject}/pom.xml ${mavenGoals}"
+    //         }
+    //     }
+    // }
     }
 }
