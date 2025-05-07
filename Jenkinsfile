@@ -59,7 +59,7 @@ pipeline {
         // }
         stage('Build and Test') {
             steps {
-                dir('CalculatorWithSpringBoot') {
+                dir('CalculatorWithTest') {
                     sh 'mvn clean install'
                     sh 'mvn test'
                 }
