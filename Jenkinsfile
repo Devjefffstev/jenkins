@@ -76,13 +76,16 @@
 
 
 node {
-  stage('Build') {
-    sh 'mvn clean install -DskipTests'
-  }
-  stage('Test') {
-    sh 'mvn test'
-  }
-  stage('Deploy') {
-    sh 'mvn deploy'
-  }
+    stage('Build CalculatorWithTest project') {
+        dir('CalculatorWithTest') {
+            sh 'mvn clean install -DskipTests'
+        }
+    }
+
+    stage('Test CalculatorWithTest project') {
+        dir('CalculatorWithTest') {
+            sh 'mvn test'
+        }
+    }
 }
+
