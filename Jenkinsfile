@@ -78,7 +78,7 @@
 node {
     stage('Build CalculatorWithTest project') {
         dir('CalculatorWithTest') {
-            sh 'mvn clean install -DskipTests'
+            sh 'mvn clean install'
         }
     }
 
