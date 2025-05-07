@@ -3,8 +3,6 @@ package com.aslinformationservices.calculator;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.concurrent.TimeUnit;
-
 class CalculatorTest {
 	private static final double DELTA = 1e-15;
 
@@ -140,10 +138,8 @@ class CalculatorTest {
 		}
 
 		long endTime = System.currentTimeMillis();
-		long seconds = endTime - startTime / 1000;
-        long minutes = seconds / 60;
-        seconds = seconds % 60;
-		System.out.println("Minutes: " + minutes + ", Seconds: " + seconds);
+
+		System.out.println("Total Execution Time for testHeavyWorkloadInital: " + ((endTime - startTime) / (1000)) + " seconds" + " or " + (endTime - startTime) + " milliseconds");
 	}
 	// @Test
 	// void testHeavyWorkloadInitalize() {
