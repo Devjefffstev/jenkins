@@ -88,6 +88,7 @@ node('maven-node') {
 
     stage('check folder') {
         sh 'ls -l'
+        echo "Pipeline started at: ${new Date(startTime)}"
     }
     stage('clone repo') {
         // Clone the repository
@@ -147,18 +148,19 @@ node('maven-node') {
             }
             parallel testGroups
     }
-
-    stage('Clean Workspace') {
-            // Clean the workspace after the build and test stages
-            sh 'rm -rf *'
-    }
-
-       // Capture the end time
+    // Capture the end time
     def endTime = System.currentTimeMillis()
     echo "Pipeline ended at: ${new Date(endTime)}"
 
     // Calculate and display the total duration
     def durationInMinutes = (endTime - startTime) / (1000 * 60)
     echo "Total Pipeline Duration: ${durationInMinutes} minutes"
+
+    
+    stage('Clean Workspace') {
+            // Clean the workspace after the build and test stages
+            sh 'rm -rf *'
+        echo "Total Pipeline Duration: ${durationInMinutes} minutes"
+    }
 
 }
