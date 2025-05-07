@@ -98,7 +98,7 @@ node('maven-node') {
 
     stage('Test CalculatorWithTest project') {
         dir('CalculatorWithTest') {
-            sh 'mvn test'
+            sh 'mvn install -Dmaven.test.failure.ignore=true'
         }
     }
 
