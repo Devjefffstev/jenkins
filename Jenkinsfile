@@ -104,6 +104,7 @@ node('maven-node') {
 
     stage('Parallel Test Execution') {
         dir('CalculatorWithTest') {
+            sh 'ls -l'
             // Request the test groupings based on previous test results
             def splits = splitTests parallelism: [$class: 'CountDrivenParallelism', size: 4], generateInclusions: true
 
