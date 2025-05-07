@@ -82,6 +82,9 @@ node('maven-node') {
 
     // Set environment variables
     env.PATH = "${jdkHome}/bin:${mvnHome}/bin:${env.PATH}"
+    // Capture the start time
+    def startTime = System.currentTimeMillis()
+    echo "Pipeline started at: ${new Date(startTime)}"
 
     stage('check folder') {
         sh 'ls -l'
@@ -136,8 +139,8 @@ node('maven-node') {
                         // Call the Maven build with tests
                         sh "mvn ${mavenInstall}"
 
-                        // Archive the test results
-                        // junit '**/target/surefire-reports/TEST-*.xml'
+                    // Archive the test results
+                    // junit '**/target/surefire-reports/TEST-*.xml'
                     }
                     }
                 }
@@ -149,4 +152,13 @@ node('maven-node') {
             // Clean the workspace after the build and test stages
             sh 'rm -rf *'
     }
+
+       // Capture the end time
+    def endTime = System.currentTimeMillis()
+    echo "Pipeline ended at: ${new Date(endTime)}"
+
+    // Calculate and display the total duration
+    def durationInMinutes = (endTime - startTime) / (1000 * 60)
+    echo "Total Pipeline Duration: ${durationInMinutes} minutes"
+
 }
