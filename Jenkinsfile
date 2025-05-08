@@ -87,6 +87,7 @@ node('maven-node') {
     echo "Pipeline started at: ${new Date(startTime)}"
     stage('check folder') {
         sh 'ls -l'
+        echo "Pipeline started at: ${new Date(startTime)}"
     }
     stage('clone repo') {
         // Clone the repository
