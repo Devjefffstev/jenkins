@@ -115,6 +115,7 @@ node('maven-node') {
     stage('Clean Workspace') {
             // Clean the workspace after the build and test stages
             sh 'rm -rf *'
+            echo "Pipeline ended at: ${new Date(endTime)}"
             echo "Pipeline Started at: ${startTime}"
             echo "Pipeline Finished at: ${endTime}"
             echo "Total Pipeline Duration: ${durationInMinutes} minutes"
