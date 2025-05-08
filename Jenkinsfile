@@ -109,7 +109,7 @@ node('maven-node') {
     stage('Parallel Test Execution') {
             sh 'ls -l'
             // Request the test groupings based on previous test results
-            def splits = splitTests parallelism: [$class: 'CountDrivenParallelism', size: 10], generateInclusions: true
+            def splits = splitTests parallelism: [$class: 'CountDrivenParallelism', size: 3], generateInclusions: true
 
             // Create dictionary to hold set of parallel test executions
             def testGroups = [:]
